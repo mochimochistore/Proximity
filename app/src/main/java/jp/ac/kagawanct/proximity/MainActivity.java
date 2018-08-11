@@ -35,83 +35,39 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     // リスト内の選択中インデックス番号
     private int mImageIndex;
 
-    @SuppressLint("HandlerLeak")
+    @SuppressLint("HandlerLeak") // Handler のメモリリーク警告を表示させないための設定
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // センサーマネージャのインスタンスを取得
-        mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-        // 近接センサーを取り扱うためのオブジェクトのインスタンスを取得
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-
-        //
-        mImageView = (ImageView)MainActivity.this.findViewById(R.id.image_view);
-
-        mImages = Arrays.asList(R.drawable.animal01,
-                R.drawable.animal02,
-                R.drawable.animal03,
-                R.drawable.animal04,
-                R.drawable.animal05);
-        mImageIndex = 0;
-
-        //
-        mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-
-                int imageResourceId = mImages.get(mImageIndex);
-                mImageView.setImageResource(imageResourceId);
-
-                mImageIndex++;
-                if (mImageIndex >= mImages.size()) {
-                    mImageIndex = 0;
-                }
-            }
-        };
+        // TODO: フィールドの初期化と、センサー計測値の更新時に呼び出されるハンドルメソッドの定義
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (mSensor != null) {
-            //
-            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
-
-        } else {
-            //
-        }
+        // TODO: 近接センサーの計測を開始
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        if (mSensor != null) {
-            //
-            mSensorManager.unregisterListener(this);
-
-        } else {
-            //
-        }
+        // TODO: 近接センサーの計測を解除
     }
 
+    // SensorEventListener インタフェースが提供するメソッドの実装
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float proximity = event.values[0];
-        Log.d(TAG, "proximity: " + proximity);
-
-        //
-        if (proximity <= 0) {
-            mHandler.sendMessage(Message.obtain());
-        }
+        // TODO: 取得した近接センサー計測値に応じて画像を更新
     }
 
+    // SensorEventListener インタフェースが提供するメソッドの実装
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        //
+        // 何もしない
     }
 }
 
