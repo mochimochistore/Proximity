@@ -1,4 +1,4 @@
-package jp.ac.kagawanct.proximity;
+package jp.ac.yuge.proximity;
 
 import org.junit.Test;
 

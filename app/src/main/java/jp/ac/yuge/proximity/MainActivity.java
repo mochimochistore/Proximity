@@ -1,4 +1,4 @@
-package jp.ac.kagawanct.proximity;
+package jp.ac.yuge.proximity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
