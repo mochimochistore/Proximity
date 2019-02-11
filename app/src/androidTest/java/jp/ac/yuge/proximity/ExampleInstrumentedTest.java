@@ -1,4 +1,4 @@
-package jp.ac.kagawanct.proximity;
+package jp.ac.yuge.proximity;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("jp.ac.kagawanct.proximity", appContext.getPackageName());
+        assertEquals("jp.ac.yuge.proximity", appContext.getPackageName());
     }
 }
